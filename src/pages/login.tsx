@@ -9,6 +9,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import KeyIcon from "@mui/icons-material/Key";
 import { AccountCircle, Visibility, VisibilityOff } from "@mui/icons-material";
 import { Dna } from "react-loader-spinner";
+import config from "../utils/config";
 
 const Login = () => {
 	const [loading, setLoading] = useState(false);
@@ -32,7 +33,7 @@ const Login = () => {
 		if (username && password) {
 			try {
 				await axios
-					.post("http://localhost:3001/auth/api/login", {
+					.post(`${config.liveBackendURL}/auth/api/login`, {
 						username: data.username,
 						password: data.password,
 					})

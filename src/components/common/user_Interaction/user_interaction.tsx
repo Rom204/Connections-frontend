@@ -2,6 +2,7 @@ import UserModel from "../../../models/user_model";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import User_interaction_view from "./user_interaction_view";
+import config from "../../../utils/config";
 
 interface UserInteractionsProps {
 	interactedUser: UserModel | undefined;
@@ -40,7 +41,7 @@ const User_interaction = (props: UserInteractionsProps) => {
 
 	const handleFollow = async () => {
 		try {
-			await axios.put("http://localhost:3001/user/follow", {
+			await axios.put(`${config.liveBackendURL}/user/follow`, {
 				followedUser: props.interactedUser?.id,
 				followingUser: props.user_id,
 			});
@@ -52,7 +53,7 @@ const User_interaction = (props: UserInteractionsProps) => {
 
 	const handleUnFollow = async () => {
 		try {
-			await axios.put("http://localhost:3001/user/unFollow", {
+			await axios.put(`${config.liveBackendURL}/user/unFollow`, {
 				data: {
 					followedUser: props.interactedUser?.id,
 					followingUser: props.user_id,
@@ -66,7 +67,7 @@ const User_interaction = (props: UserInteractionsProps) => {
 
 	const showFollowers = async () => {
 		try {
-			await axios.get(`http://localhost:3001/user/${props.interactedUser?.id}/followers`).then((response) => {
+			await axios.get(`${config.liveBackendURL}/user/${props.interactedUser?.id}/followers`).then((response) => {
 				console.log(response.data);
 				setAllFollowers(response.data);
 			});
@@ -78,7 +79,7 @@ const User_interaction = (props: UserInteractionsProps) => {
 
 	const showFollowing = async () => {
 		try {
-			await axios.get(`http://localhost:3001/user/${props.interactedUser?.id}/followings`).then((response) => {
+			await axios.get(`${config.liveBackendURL}/user/${props.interactedUser?.id}/followings`).then((response) => {
 				console.log(response.data);
 				setAllFollowings(response.data);
 			});

@@ -1,4 +1,5 @@
 import axios from "axios";
+import config from "../utils/config";
 
 export default class AuthServices {
 
@@ -7,7 +8,7 @@ export default class AuthServices {
 
     public async register(data: any): Promise<object> {
         const result = await axios.create({
-            baseURL: "http://localhost:3001/auth"
+            baseURL: `${config.liveBackendURL}/auth`
         })
             .post("/api/register", {
                 username: data.username,
@@ -23,7 +24,7 @@ export default class AuthServices {
         let userData = {};
 
         await axios.create({
-            baseURL: "http://localhost:3001/auth"
+            baseURL: `${config.liveBackendURL}/auth`
         })
             .post("/check-login", {
                 username: data.username,
@@ -41,7 +42,7 @@ export default class AuthServices {
     public async checkJWT(token: string): Promise<object> {
         let isJWTValid = {};
         axios.create({
-            baseURL: "http://localhost:3001/auth",
+            baseURL: `${config.liveBackendURL}/auth`,
             headers: {
                 Authorization: `Bearer ${token}`
             },

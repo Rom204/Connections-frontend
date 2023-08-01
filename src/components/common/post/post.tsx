@@ -3,6 +3,7 @@ import PostModel from "../../../models/post_model";
 import axios from "axios";
 import { useAppSelector } from "../../../redux/hooks";
 import { useState } from "react";
+import config from "../../../utils/config";
 
 interface PostProps extends PostModel {
 	loading?: boolean;
@@ -15,7 +16,7 @@ const Post = (props: PostProps) => {
 	const handleLikeAction = async () => {
 		console.log(props.id, user.id);
 		try {
-			await axios.put("http://localhost:3001/post/api/handle-like", {
+			await axios.put(`${config.liveBackendURL}/post/api/handle-like`, {
 				postID: props.id,
 				likeAuthor: user.id,
 			}).then((response) => {
@@ -31,7 +32,7 @@ const Post = (props: PostProps) => {
 		setUploadingComment(true);
 		console.log(props.id, user.id, comment);
 		try {
-			await axios.post("http://localhost:3001/post/create-comment", {
+			await axios.post(`${config.liveBackendURL}/post/create-comment`, {
 				postID: props.id,
 				commentAuthor: user.id,
 				comment: comment,

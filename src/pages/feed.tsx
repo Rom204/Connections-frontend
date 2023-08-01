@@ -4,6 +4,7 @@ import axios from "axios";
 import { useAppSelector } from "../redux/hooks";
 import Post from "../components/common/post/post";
 import PostModel from "../models/post_model";
+import config from "../utils/config";
 
 const Feed = () => {
 	const user_state = useAppSelector((state) => state.user);
@@ -26,11 +27,11 @@ const Feed = () => {
 
 	const getPosts = async (user_id: string) => {
 		await axios
-			.post("http://localhost:3001/user/followed-users-posts", {
+			.post(`${config.liveBackendURL}/user/followed-users-posts`, {
 				id: user_id,
 			})
 			.then((response) => {
-				console.log(response.data);
+				console.log(response);
 				setFollowedUsersPosts(response.data);
 				setTimeout(() => setLoading(false),1000)
 			});

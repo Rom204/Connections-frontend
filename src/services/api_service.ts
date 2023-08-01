@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
+import config from "../utils/config";
 
 export class ApiService {
 
@@ -6,7 +7,7 @@ export class ApiService {
 
     constructor() {
         this.instance = axios.create({
-            baseURL: "http://localhost:3001/"
+            baseURL: `${config.liveBackendURL}/`
         });
 
         this.instance.interceptors.request.use((config) => {

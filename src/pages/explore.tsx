@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "../redux/hooks";
 import UserModel from "../models/user_model";
 import User_interaction from "../components/common/user_Interaction/user_interaction";
+import config from "../utils/config";
 
 const Explore = () => {
 	const user_state = useAppSelector((state) => state.user);
@@ -21,7 +22,7 @@ const Explore = () => {
 	}, [user_state]);
 
 	const getUsers = async () => {
-		const response = await axios.post("http://localhost:3001/user/all-users", {
+		const response = await axios.post(`${config.liveBackendURL}/user/all-users`, {
 			id: user_state.id,
 		});
 

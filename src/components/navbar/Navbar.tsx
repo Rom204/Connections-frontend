@@ -10,6 +10,7 @@ import { MuiFileInput } from "mui-file-input";
 import { ProgressBar } from "react-loader-spinner";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SettingsIcon from "@mui/icons-material/Settings";
+import config from "../../utils/config";
 
 const Navbar = () => {
 	const navigate = useNavigate();
@@ -61,7 +62,7 @@ const Navbar = () => {
 		newPost.image = image;
 		console.log(newPost);
 		try {
-			await axios.post(`http://localhost:3001/post/${isAuth.id}/create-post`, newPost).then((response) => {
+			await axios.post(`${config.liveBackendURL}/post/${isAuth.id}/create-post`, newPost).then((response) => {
 				console.log(response.data);
 				handleClose();
 			});

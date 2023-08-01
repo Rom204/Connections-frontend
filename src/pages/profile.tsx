@@ -6,6 +6,7 @@ import User_interaction from "../components/common/user_Interaction/user_interac
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../redux/hooks";
+import config from "../utils/config";
 
 const Profile = () => {
 	let location = useLocation();
@@ -27,7 +28,7 @@ const Profile = () => {
 
 	const getUser = async () => {
 		try {
-			const response = await axios.get(`http://localhost:3001/user/${location.state}`);
+			const response = await axios.get(`${config.liveBackendURL}/user/${location.state}`);
 			let data = response.data;
 			console.log(data);
 			setUserProfile(data);
