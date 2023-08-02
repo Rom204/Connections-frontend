@@ -26,6 +26,7 @@ const Feed = () => {
 	}, [user_state]);
 
 	const getPosts = async (user_id: string) => {
+		console.log("fetching posts ...");
 		await axios
 			.post(`${config.liveBackendURL}/user/followed-users-posts`, {
 				id: user_id,
@@ -33,13 +34,13 @@ const Feed = () => {
 			.then((response) => {
 				console.log(response);
 				setFollowedUsersPosts(response.data);
-				setTimeout(() => setLoading(false),1000)
+				setTimeout(() => setLoading(false), 1000);
 			});
 	};
 	console.log(followedUsersPosts);
 
 	return (
-		<Box sx={{ display: "flex", flexWrap: "wrap",overflowY:"scroll", "&::-webkit-scrollbar": { display: "none"}, justifyContent: "center", textAlign: "center", alignItems: "center", position: "relative", color: "white", height:"100%",width:"100%" }}>
+		<Box sx={{ display: "flex", flexWrap: "wrap", overflowY: "scroll", "&::-webkit-scrollbar": { display: "none" }, justifyContent: "center", textAlign: "center", alignItems: "center", position: "relative", color: "white", height: "100%", width: "100%" }}>
 			{followedUsersPosts.map((post) => {
 				return (
 					<Post
