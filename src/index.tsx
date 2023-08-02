@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
@@ -12,11 +12,11 @@ if (process.env.NODE_ENV === "production") disableReactDevTools();
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 console.log("render stage: index comp")
 root.render(
-	<BrowserRouter>
+	<HashRouter>
 		<Provider store={store}>
 			<App />
 		</Provider>
-	</BrowserRouter>
+	</HashRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
