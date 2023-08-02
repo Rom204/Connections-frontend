@@ -29,7 +29,7 @@ const Main = ({ user }: MainProps) => {
 						element={<Feed />}
 					/>
 					<Route
-						path={"feed"}
+						path="feed"
 						element={<Feed />}
 					/>
 
