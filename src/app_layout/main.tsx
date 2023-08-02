@@ -24,12 +24,12 @@ const Main = ({ user }: MainProps) => {
 				<Route
 					path="/"
 					element={<Private_router />}>
-					{/* <Route
-						path="feed"
-						element={<Feed />}
-					/> */}
 					<Route
-						path={"/" || "feed"}
+						path="/"
+						element={<Feed />}
+					/>
+					<Route
+						path={"feed"}
 						element={<Feed />}
 					/>
 
