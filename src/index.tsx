@@ -12,6 +12,7 @@ if (process.env.NODE_ENV === "production") disableReactDevTools();
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 console.log("render stage: index comp")
 root.render(
+	// BrowserRouter
 	<HashRouter>
 		<Provider store={store}>
 			<App />
