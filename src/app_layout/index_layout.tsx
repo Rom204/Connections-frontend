@@ -2,6 +2,8 @@ import { Box } from "@mui/material";
 import Footer from "./footer";
 import Header from "./header";
 import Main from "./main";
+import "./index_layout.css";
+
 
 interface LayoutProps {
 	user: {
@@ -21,18 +23,18 @@ const General_Layout = ({ user }: LayoutProps) => {
 			</main>
 		)
 	}
-	
+
 	return (
-		<Box sx={{ display: "flex", height:'100%' }}>
-			<header style={{ width:"20%" }}>
+		<Box sx={{ display: "flex", height: "100%" }}>
+			<header className="myHeader">
 				<Header user={user} />
 			</header>
 
-			<main style={{ width:"60%" }}>
+			<main className="myMain">
 				<Main user={user} />
 			</main>
 
-			<footer style={{ width:"30%" }}>
+			<footer className="myFooter">
 				<Footer
 					description={"nothing at all"}
 					title={"extra"}
