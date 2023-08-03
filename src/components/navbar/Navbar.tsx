@@ -11,8 +11,13 @@ import { ProgressBar } from "react-loader-spinner";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SettingsIcon from "@mui/icons-material/Settings";
 import config from "../../utils/config";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
+import SearchIcon from "@mui/icons-material/Search";
 
+import "./navbar.css";
 
 const Navbar = () => {
 	const navigate = useNavigate();
@@ -111,9 +116,9 @@ const Navbar = () => {
 	};
 
 	const navigation = [
-		{ name: "feed", path: "/feed" },
-		{ name: "profile", path: `/profile/${isAuth.username}` },
-		{ name: "explore", path: "/explore" },
+		{ name: "feed", path: "/feed", symbol: <HomeRoundedIcon /> },
+		{ name: "profile", path: `/profile/${isAuth.username}`, symbol: <AccountCircleIcon /> },
+		{ name: "explore", path: "/explore", symbol: <SearchIcon /> },
 	];
 	const [openMenu, setOpenMenu] = useState(false);
 	const handleOpenMenu = () => setOpenMenu(true);
@@ -131,6 +136,7 @@ const Navbar = () => {
 		<Box sx={{ display: "flex", flexDirection: { xs: "row", sm: "column" }, height: "100%" }}>
 			<Box sx={{ flexGrow: 1 }}>
 				<img
+					className="logo"
 					src={logo}
 					alt=""
 					style={{ height: "6rem", width: "6rem" }}
@@ -145,6 +151,7 @@ const Navbar = () => {
 							<Button
 								color="inherit"
 								sx={{ display: { xs: "none", sm: "block" }, padding: "0.5rem 1.5rem 0.5rem 1.5rem", fontWeight: "600", ":hover": { backgroundColor: "#5e5959" }, transition: "color 1s cubic-bezier(0.06, 0.81, 0, 0.98),border-color .5s cubic-bezier(0.06, 0.81, 0, 0.98)" }}>
+								{item.symbol}
 								{item.name}
 							</Button>
 						</NavLink>
@@ -152,8 +159,9 @@ const Navbar = () => {
 				})}
 				<Button
 					sx={{ display: { xs: "none", sm: "block" }, padding: "0.5rem 1.5rem 0.5rem 1.5rem", fontWeight: "600", ":hover": { backgroundColor: "#5e5959" }, transition: "color 1s cubic-bezier(0.06, 0.81, 0, 0.98),border-color .5s cubic-bezier(0.06, 0.81, 0, 0.98)" }}
-					// variant="outlined"
-					onClick={handleClickOpen}>
+					onClick={handleClickOpen}
+					color="inherit">
+					<AddBoxRoundedIcon/>
 					Create
 				</Button>
 			</Box>
@@ -247,7 +255,7 @@ const Navbar = () => {
 					))}
 				</SpeedDial>
 			</Box>
-			<Box>
+			<Box sx={{ display: { xs: "block", sm: "none" } }}>
 				<Button onClick={toggleDrawer()}>
 					<MenuIcon />
 				</Button>
