@@ -235,7 +235,7 @@ const Navbar = () => {
 							borderColor="#F4442E"
 							barColor="#51E5FF"
 						/>
-						<p>please do not exist while uploading the post</p>
+						<p>Please do not exit while uploading the post</p>
 					</Backdrop>
 				</Dialog>
 			</Box>
