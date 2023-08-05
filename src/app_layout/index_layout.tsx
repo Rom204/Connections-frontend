@@ -4,7 +4,6 @@ import Header from "./header";
 import Main from "./main";
 import "./index_layout.css";
 
-
 interface LayoutProps {
 	user: {
 		id: string;
@@ -17,17 +16,18 @@ const General_Layout = ({ user }: LayoutProps) => {
 	console.log("layout level 3");
 
 	if (user.id.length === 0) {
+		// returning the login/register pages without the header or the footer
 		return (
-			<main style={{ height: "100%", width:"100%" }}>
+			<main style={{ height: "100%", width: "100%" }}>
 				<Main user={user} />
 			</main>
-		)
+		);
 	}
 
 	return (
 		<Box sx={{ display: "flex", height: "100%" }}>
 			<header className="myHeader">
-				<Header user={user} />
+				<Header />
 			</header>
 
 			<main className="myMain">
@@ -35,11 +35,7 @@ const General_Layout = ({ user }: LayoutProps) => {
 			</main>
 
 			<footer className="myFooter">
-				<Footer
-					description={"nothing at all"}
-					title={"extra"}
-					user={user}
-				/>
+				<Footer />
 			</footer>
 		</Box>
 	);
