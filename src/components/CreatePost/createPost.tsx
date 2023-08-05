@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { ProgressBar } from "react-loader-spinner";
 import { useAppSelector } from "../../redux/hooks";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
+import config from "../../utils/config";
 
 const CreatePost = (): JSX.Element => {
 	const isAuth = useAppSelector((state) => state.user);
@@ -54,7 +55,7 @@ const CreatePost = (): JSX.Element => {
 		newPost.image = image;
 		console.log(newPost);
 		try {
-			await axios.post(`http://localhost:3001/post/${isAuth.id}/create-post`, newPost).then((response) => {
+			await axios.post(`${config.liveBackendURL}/post/${isAuth.id}/create-post`, newPost).then((response) => {
 				console.log(response.data);
 				handleClose();
 			});
