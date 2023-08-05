@@ -25,7 +25,7 @@ interface PostViewProps extends PostModel {
 
 const PostView = (props: PostViewProps) => {
 	const { loading = false } = props;
-	const { register, handleSubmit, watch, reset} = useForm({});
+	const { register, handleSubmit, watch, reset } = useForm({});
 	const [comment] = watch(["comment"]);
 	const [validComment, setValidComment] = useState(false);
 	const [like, setLike] = useState(false);
@@ -210,7 +210,9 @@ const PostView = (props: PostViewProps) => {
 							<Typography
 								variant="body2"
 								color="white"
-								component="p">
+								component="p"
+								onClick={props.openFullPostView}
+								sx={{ cursor: "pointer", ":hover": { color: "grey" } }}>
 								{props.comments.length > 0 ? props.comments.length + " comments" : "No comments yet"}
 							</Typography>
 							<form
