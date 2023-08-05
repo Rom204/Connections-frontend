@@ -47,7 +47,7 @@ const User_interaction_view = (props: UserInteractionViewProps) => {
 	return (
 		<Card
 			elevation={0}
-			sx={{ display: "flex", alignContent: "center", textAlign: "center", alignItems: "center", margin: "1rem" }}>
+			sx={{ display: "flex", flexDirection: {xs: "column", sm: "row"}, alignContent: "center", textAlign: "center", alignItems: "center", margin: "1rem" }}>
 			<CardHeader
 				sx={{ display: "flex", flexDirection: "column", alignContent: "center", textAlign: "center" }}
 				avatar={
