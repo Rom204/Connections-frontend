@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Backdrop, Box, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAppSelector } from "../redux/hooks";
@@ -6,6 +6,7 @@ import Post from "../components/common/post/post";
 import PostModel from "../models/post_model";
 import config from "../utils/config";
 import { useNavigate } from "react-router-dom";
+import { MagnifyingGlass } from "react-loader-spinner";
 
 const Feed = () => {
 	const user_state = useAppSelector((state) => state.user);
@@ -41,6 +42,26 @@ const Feed = () => {
 			});
 	};
 	console.log(followedUsersPosts);
+
+	if (loading) {
+		return (
+			<Backdrop
+				sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+				open={loading}>
+				<h1>Fetching posts</h1>
+				<MagnifyingGlass
+					visible={true}
+					height="80"
+					width="80"
+					ariaLabel="MagnifyingGlass-loading"
+					wrapperStyle={{}}
+					wrapperClass="MagnifyingGlass-wrapper"
+					glassColor="#c0efff"
+					color="#e15b64"
+				/>
+			</Backdrop>
+		);
+	}
 
 	if (followedUsersPosts.length === 0) {
 		return (
