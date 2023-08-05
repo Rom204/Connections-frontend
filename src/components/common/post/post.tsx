@@ -54,6 +54,7 @@ const Post = (props: PostProps) => {
 				})
 				.then((response) => {
 					console.log(response.data);
+					setComments(response.data);
 					setUploadingComment(false);
 				});
 		} catch (error) {
@@ -66,9 +67,6 @@ const Post = (props: PostProps) => {
 				isOpen={open}
 				handleClose={handleClose}
 				likeAction={handleLikeAction}
-				commentSection={function (): void {
-					throw new Error("Function not implemented.");
-				}}
 				commentAction={handleCommentAction}
 				id={props.id}
 				createdAt={props.createdAt}
@@ -80,7 +78,7 @@ const Post = (props: PostProps) => {
 					username: props.author.username,
 				}}
 				likes={[]}
-				comments={props.comments}
+				comments={comments && comments.length > 0 ? comments : props.comments}
 			/>
 		);
 	}
@@ -88,9 +86,6 @@ const Post = (props: PostProps) => {
 		<PostView
 			loading={props.loading}
 			likeAction={handleLikeAction}
-			commentSection={function (): void {
-				throw new Error("Function not implemented.");
-			}}
 			commentAction={handleCommentAction}
 			id={props.id}
 			createdAt={props.createdAt}
@@ -102,7 +97,7 @@ const Post = (props: PostProps) => {
 				username: props.author.username,
 			}}
 			likes={likes && likes.length > 0 ? likes : props.likes}
-			comments={props.comments}
+			comments={comments && comments.length > 0 ? comments : props.comments}
 			uploadingComment={uploadingComment}
 			loggedUserID={user.id}
 			openFullPostView={openFullPostView}

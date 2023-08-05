@@ -19,14 +19,13 @@ interface PostViewProps extends PostModel {
 	loading?: boolean;
 	uploadingComment?: boolean;
 	likeAction: () => void;
-	commentSection: () => void;
 	commentAction: (comment: string) => void;
 	openFullPostView: () => void;
 }
 
 const PostView = (props: PostViewProps) => {
 	const { loading = false } = props;
-	const { register, handleSubmit, watch } = useForm({});
+	const { register, handleSubmit, watch, reset} = useForm({});
 	const [comment] = watch(["comment"]);
 	const [validComment, setValidComment] = useState(false);
 	const [like, setLike] = useState(false);
@@ -53,6 +52,7 @@ const PostView = (props: PostViewProps) => {
 	};
 	const createNewComment = (comment: any) => {
 		props.commentAction(comment);
+		reset();
 	};
 
 	return (
@@ -207,17 +207,12 @@ const PostView = (props: PostViewProps) => {
 						</React.Fragment>
 					) : (
 						<div>
-							<ul>
-								{props.comments.map((comment) => {
-									return (
-										<li
-											key={comment.id}
-											style={{ color: "white" }}>
-											{comment.user.username + "  " + comment.comment}
-										</li>
-									);
-								})}
-							</ul>
+							<Typography
+								variant="body2"
+								color="white"
+								component="p">
+								{props.comments.length > 0 ? props.comments.length + " comments" : "No comments yet"}
+							</Typography>
 							<form
 								onSubmit={handleSubmit((data) => {
 									console.log(data);
