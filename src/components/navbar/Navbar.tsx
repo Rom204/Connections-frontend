@@ -8,6 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Settings from "./Settings";
 import "./navbar.css";
 import CreatePost from "../CreatePost/createPost";
+import { BigNavButton, SmallNavButton } from "../common/button/NavbarButtons";
 
 const Navbar = () => {
 	const isAuth = useAppSelector((state) => state.user);
@@ -33,18 +34,12 @@ const Navbar = () => {
 							to={item.path}
 							style={{ textDecoration: "none", color: "white" }}>
 							{/* (medium+) screen size button */}
-							<Button
-								color="inherit"
-								sx={{ display: { xs: "none", sm: "block" }, fontWeight: "600", ":hover": { backgroundColor: "#5e5959" }, transition: "color 1s cubic-bezier(0.06, 0.81, 0, 0.98),border-color .5s cubic-bezier(0.06, 0.81, 0, 0.98)" }}>
-								{item.symbol}
-								{item.name}
-							</Button>
+							<BigNavButton
+								name={item.name}
+								symbol={item.symbol}
+							/>
 							{/* (medium-) screen size button */}
-							<Button
-								color="inherit"
-								sx={{ display: { xs: "block", sm: "none" }, fontWeight: "600", ":hover": { backgroundColor: "#5e5959" }, transition: "color 1s cubic-bezier(0.06, 0.81, 0, 0.98),border-color .5s cubic-bezier(0.06, 0.81, 0, 0.98)" }}>
-								{item.symbol}
-							</Button>
+							<SmallNavButton symbol={item.symbol} />
 						</NavLink>
 					);
 				})}

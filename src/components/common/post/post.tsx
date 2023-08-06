@@ -4,7 +4,6 @@ import axios from "axios";
 import { useAppSelector } from "../../../redux/hooks";
 import { useState } from "react";
 import FullPostView from "./FullPostView";
-
 import config from "../../../utils/config";
 
 interface PostProps extends PostModel {

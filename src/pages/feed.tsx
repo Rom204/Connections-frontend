@@ -7,13 +7,13 @@ import PostModel from "../models/post_model";
 import config from "../utils/config";
 import { useNavigate } from "react-router-dom";
 import { MagnifyingGlass } from "react-loader-spinner";
+import { FeedLoader } from "../components/common/loaders/Loaders";
 
 const Feed = () => {
 	const user_state = useAppSelector((state) => state.user);
 	const [followedUsersPosts, setFollowedUsersPosts] = useState<PostModel[]>([]);
 	const [loading, setLoading] = useState(true);
 	const navigation = useNavigate();
-
 
 	console.log("this is the feed component");
 
@@ -44,23 +44,7 @@ const Feed = () => {
 	console.log(followedUsersPosts);
 
 	if (loading) {
-		return (
-			<Backdrop
-				sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-				open={loading}>
-				<h1>Fetching posts</h1>
-				<MagnifyingGlass
-					visible={true}
-					height="80"
-					width="80"
-					ariaLabel="MagnifyingGlass-loading"
-					wrapperStyle={{}}
-					wrapperClass="MagnifyingGlass-wrapper"
-					glassColor="#c0efff"
-					color="#e15b64"
-				/>
-			</Backdrop>
-		);
+		return <FeedLoader loading={loading} />;
 	}
 
 	if (followedUsersPosts.length === 0) {

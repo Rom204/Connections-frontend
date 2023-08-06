@@ -15,8 +15,6 @@ const User_interaction = (props: UserInteractionsProps) => {
 	const [isMyProfile, setIsMyProfile] = useState(false);
 	const [allFollowers, setAllFollowers] = useState<any>([]);
 	const [allFollowings, setAllFollowings] = useState<any>([]);
-	// const [usersList, setUsersList] = useState([]);
-	console.log(props.interactedUser, props.user_id);
 
 	useEffect(() => {
 		if (props.interactedUser?.id === props.user_id) {
