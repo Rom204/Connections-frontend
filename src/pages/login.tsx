@@ -47,7 +47,7 @@ const Login = () => {
 			} catch (error: any) {
 				// TODO : create an error handler for login and register
 				console.log(error);
-				setTimeout(() => setLoading(false), 2000);
+				setLoading(false);
 				if (!error?.response) {
 					setErrMsg("no server response");
 				}

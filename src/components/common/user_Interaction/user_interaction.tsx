@@ -7,7 +7,7 @@ import config from "../../../utils/config";
 interface UserInteractionsProps {
 	interactedUser: UserModel | undefined;
 	user_id?: string;
-	followStatus: () => void;
+	
 }
 
 const User_interaction = (props: UserInteractionsProps) => {

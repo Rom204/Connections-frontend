@@ -43,9 +43,6 @@ const Profile = () => {
 				key={userProfile?.id}
 				interactedUser={userProfile}
 				user_id={user_state.id}
-				followStatus={function (): void {
-					throw new Error("Function not implemented.");
-				}}
 			/>
 			<Box sx={{ height: "100%", width: "100%" }}>
 				<Grid

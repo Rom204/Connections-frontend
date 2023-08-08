@@ -38,7 +38,7 @@ const Feed = () => {
 			.then((response) => {
 				console.log(response);
 				setFollowedUsersPosts(response.data);
-				setTimeout(() => setLoading(false), 1000);
+				setLoading(false);
 			});
 	};
 	console.log(followedUsersPosts);

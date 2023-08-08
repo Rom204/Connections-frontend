@@ -28,7 +28,7 @@ const App = () => {
 				.isJwtValid()
 				.then((response) => {
 					dispatch(login(response.data));
-					setTimeout(() => setLoading(false), 3000);
+					setLoading(false);
 				})
 				.catch(function (error) {
 					switch (error.response.status) {

@@ -50,9 +50,6 @@ const Explore = () => {
 						key={interactedUser.id}
 						interactedUser={interactedUser}
 						user_id={user_state.id}
-						followStatus={function (): void {
-							throw new Error("Function not implemented.");
-						}}
 					/>
 				);
 			})}

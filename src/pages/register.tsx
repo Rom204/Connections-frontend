@@ -68,7 +68,7 @@ const Register = () => {
 			} catch (error: any) {
 				// TODO : create an error handler for login and register
 				console.log(error);
-				setTimeout(() => setLoading(false),3000);
+				setLoading(false);
 				if (error.response?.status === 404) {
 					setErrorMessage("username or email already taken");
 				} else {
@@ -249,7 +249,7 @@ const Register = () => {
 					</p>
 				</Card>
 			)}
-			<RegisterLoader loading={loading}/>
+			<RegisterLoader loading={loading} />
 		</Box>
 	);
 };
