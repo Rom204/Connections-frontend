@@ -85,7 +85,6 @@ const FullPostView = (props: FullPostView) => {
 						<DialogActions>
 							<form
 								onSubmit={handleSubmit((data) => {
-									console.log(data);
 									createNewComment(data);
 								})}>
 								<TextField

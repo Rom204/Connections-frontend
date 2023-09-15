@@ -18,7 +18,6 @@ const App = () => {
 	const [modalMessage, setModalMessage] = useState("");
 
 	useEffect(() => {
-		console.log(user);
 		if (user?.id?.length > 0) return; //checking if there is any user state initialized
 
 		const token = localStorage.getItem("JWT");

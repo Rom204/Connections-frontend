@@ -10,7 +10,6 @@ import config from "../utils/config";
 
 const Profile = () => {
 	let location = useLocation();
-	console.log(location);
 	console.log("this is the profile component");
 
 	const user_state = useAppSelector((state) => state.user);
@@ -30,7 +29,6 @@ const Profile = () => {
 		try {
 			const response = await axios.get(`${config.liveBackendURL}/user/${location.state}`);
 			let data = response.data;
-			console.log(data);
 			setUserProfile(data);
 		} catch (error) {
 			console.log(error);

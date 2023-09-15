@@ -60,7 +60,6 @@ const Register = () => {
 		if (validEmail && validUsername && validPassword && validMatchingPassword) {
 			try {
 				const registration = await authService.register(data);
-				console.log(registration);
 				if (registration) {
 					setSuccess(true);
 					setLoading(false);
@@ -114,7 +113,6 @@ const Register = () => {
 						// TODO: change unknown
 						onSubmit={handleSubmit((data: unknown) => {
 							handleLoading();
-							console.log(data);
 							registerValidation(data);
 						})}>
 						<TextField

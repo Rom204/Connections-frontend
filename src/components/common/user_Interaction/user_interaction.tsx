@@ -28,7 +28,6 @@ const User_interaction = (props: UserInteractionsProps) => {
 			return;
 		}
 		const found = props.interactedUser?.followedByIDs?.includes(props.user_id);
-		console.log(found);
 		if (!found) {
 			setIsFollowed(false);
 		}
@@ -66,26 +65,22 @@ const User_interaction = (props: UserInteractionsProps) => {
 	const showFollowers = async () => {
 		try {
 			await axios.get(`${config.liveBackendURL}/user/${props.interactedUser?.id}/followers`).then((response) => {
-				console.log(response.data);
 				setAllFollowers(response.data);
 			});
 		} catch (error) {
 			console.log(error);
 		}
 	};
-	console.log("this was just made for showing all users followers", allFollowers);
 
 	const showFollowing = async () => {
 		try {
 			await axios.get(`${config.liveBackendURL}/user/${props.interactedUser?.id}/followings`).then((response) => {
-				console.log(response.data);
 				setAllFollowings(response.data);
 			});
 		} catch (error) {
 			console.log(error);
 		}
 	};
-	console.log("this was just made for showing all user's followings", allFollowings);
 
 	return (
 		<User_interaction_view

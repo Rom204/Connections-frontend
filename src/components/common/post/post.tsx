@@ -25,7 +25,6 @@ const Post = (props: PostProps) => {
 		setOpen(true);
 	};
 	const handleLikeAction = async () => {
-		console.log(props.id, user.id);
 		try {
 			await axios
 				.put(`${config.liveBackendURL}/post/api/handle-like`, {
@@ -33,7 +32,6 @@ const Post = (props: PostProps) => {
 					likeAuthor: user.id,
 				})
 				.then((response) => {
-					console.log(response);
 					setLikes(response.data);
 				});
 		} catch (error) {
@@ -43,7 +41,6 @@ const Post = (props: PostProps) => {
 
 	const handleCommentAction = async (comment: string) => {
 		setUploadingComment(true);
-		console.log(props.id, user.id, comment);
 		try {
 			await axios
 				.post(`${config.liveBackendURL}/post/create-comment`, {
@@ -52,7 +49,6 @@ const Post = (props: PostProps) => {
 					comment: comment,
 				})
 				.then((response) => {
-					console.log(response.data);
 					setComments(response.data);
 					setUploadingComment(false);
 				});

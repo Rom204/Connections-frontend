@@ -18,7 +18,6 @@ const CreatePost = (): JSX.Element => {
 
 	const handleFile = (newFile: File | null) => {
 		const file = newFile;
-		console.log(file);
 		setFile(file);
 		if (file === null) {
 			setImage(file);
@@ -51,12 +50,9 @@ const CreatePost = (): JSX.Element => {
 	};
 
 	const checkValid = async (newPost: any) => {
-		console.log(image);
 		newPost.image = image;
-		console.log(newPost);
 		try {
 			await axios.post(`${config.liveBackendURL}/post/${isAuth.id}/create-post`, newPost).then((response) => {
-				console.log(response.data);
 				handleClose();
 			});
 		} catch (error) {
@@ -92,7 +88,6 @@ const CreatePost = (): JSX.Element => {
 					<form
 						onSubmit={handleSubmit((data) => {
 							handleLoading();
-							console.log(data);
 							checkValid(data);
 						})}>
 						<MuiFileInput

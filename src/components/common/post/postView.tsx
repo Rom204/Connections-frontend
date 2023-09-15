@@ -217,7 +217,6 @@ const PostView = (props: PostViewProps) => {
 							</Typography>
 							<form
 								onSubmit={handleSubmit((data) => {
-									console.log(data);
 									createNewComment(data);
 								})}>
 								<TextField

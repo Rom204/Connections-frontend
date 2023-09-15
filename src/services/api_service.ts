@@ -27,7 +27,6 @@ export class ApiService {
         }
         try {
             const result = await this.instance.get('auth/api/check-jwt');
-            console.log(result)
             return result
         } catch (error: any) {
             this.handleErrors(error)

@@ -15,7 +15,6 @@ interface MainProps {
 	};
 }
 const Main = ({ user }: MainProps) => {
-	console.log(user);
 	console.log("main level 4");
 	return (
 		<Box sx={{ height:"100%" }}>

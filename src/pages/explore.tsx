@@ -10,7 +10,6 @@ const Explore = () => {
 	const user_state = useAppSelector((state) => state.user);
 	const [allUsers, setAllUsers] = useState<UserModel[]>([]);
 	console.log("this is the Explore component");
-	console.log(user_state);
 	useEffect(() => {
 		if (user_state.id.length > 0) {
 			try {

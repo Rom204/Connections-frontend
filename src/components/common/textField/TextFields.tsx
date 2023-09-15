@@ -11,7 +11,6 @@ interface TextFieldProps {
 }
 
 const Text_field = (props: TextFieldProps): JSX.Element => {
-	console.log(props)
 	const { register } = useForm({});
 
 	return (

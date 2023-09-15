@@ -36,12 +36,10 @@ const Feed = () => {
 				id: user_id,
 			})
 			.then((response) => {
-				console.log(response);
 				setFollowedUsersPosts(response.data);
 				setLoading(false);
 			});
 	};
-	console.log(followedUsersPosts);
 
 	if (loading) {
 		return <FeedLoader loading={loading} />;

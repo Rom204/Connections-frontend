@@ -50,7 +50,6 @@ export default class AuthServices {
             .post("/check-jwt")
             .then(response => {
                 isJWTValid = response;
-                console.log(isJWTValid)
             })
         return isJWTValid
     }
